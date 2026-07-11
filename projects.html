@@ -11,6 +11,14 @@
   <nav class="navbar">
     <div class="navbar-content">
       <img src="wwlogo.png" alt="WolfWork Labs" class="header-logo">
+
+      <button class="nav-toggle" aria-expanded="false" aria-controls="main-nav">
+        <span class="sr-only">Open menu</span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </button>
+
       <ul class="nav-links">
         <li><a href="index.html">Home</a></li>
         <li><a href="projects.html">Side Projects</a></li>
@@ -87,5 +95,17 @@
     <p>Tools for Inner and Outer Worlds</p>
     <p>&copy; 2026</p>
   </footer>
+  <script>
+    const toggle = document.querySelector('.nav-toggle');
+    const nav = document.querySelector('.nav-links');
+
+    if (toggle && nav) {
+      toggle.addEventListener('click', () => {
+        const expanded = toggle.getAttribute('aria-expanded') === 'true';
+        toggle.setAttribute('aria-expanded', String(!expanded));
+        nav.classList.toggle('open');
+      });
+    }
+  </script>
  
 </body>
