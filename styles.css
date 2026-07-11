@@ -1,0 +1,441 @@
+body {
+  background-image: url('background.svg');  /* the file path to the image */
+  background-repeat: round;        /* it's one big picture, not a tile */
+  background-size: 400px;          /* covers the entire background */
+  background-position: center;   /* where it sits */
+  background-attachment: fixed;      /* stays put as you scroll */
+  background-color:#D1D1D1;         /* the light color behind it */
+  margin: 0;
+}
+
+.navbar {
+  background-image: url('background.svg');  
+  background-repeat: repeat;    
+  position: fixed;
+  background-size: 400px;    
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 120px;
+  background-color: #D1D1D1;
+  color: black;
+  z-index: 1000;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.header-logo {
+  width: 200px;
+  height: auto;
+  display: block;
+  object-fit: contain;
+  margin: 0;
+}
+
+.navbar-content {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between; 
+  padding: 30px 80px;
+  height: 100%;
+  font-family: 'Lato', sans-serif;
+  font-size: 1.4em;
+}
+
+.nav-links {
+  display: flex;
+  list-style: none;
+  gap: 90px;
+  padding-right: 80px;
+}
+
+nav a {
+  color: black;              
+  text-decoration: none;     /* removes the underline */
+}
+
+nav a:active {
+  color: #ce0000;                /* color while being clicked */
+}
+
+nav a:hover {
+  color: #ce0000;           /* color when hovered over */
+}
+
+main {
+  margin-top: 160px; 
+}
+
+.projects-page main {
+  margin-top: 200px; 
+}
+
+h1 {
+  font-family: 'Cardo', serif;
+  font-size: 6em;
+  letter-spacing: 7px;
+  color: #000;
+  text-align: center;
+  font-weight: 600;
+  margin-bottom: 0;
+  margin-top: 0;
+}
+
+h2 {
+  font-family: 'Cardo', serif;
+  font-size: 1.8em;
+  color: #000;
+  text-align: left;
+  font-weight: 400;
+}
+
+h3 {
+  font-family: 'Lato', sans-serif;
+  font-size: 1em;
+  color: #000;
+  text-align: left;
+  font-weight: 400;
+  text-align: center;
+}
+
+h4 {
+  font-family: 'Lato', sans-serif;
+  font-size: 1em;
+  color: #ce0000;
+  text-align: left;
+  font-weight: 400;
+  letter-spacing: 4px;
+  line-height: 1.6;
+  margin-top: 10px;
+  padding-left: 20px;
+}
+
+h5 {
+  font-family: 'Lato', sans-serif;
+  font-size: 1.4em;
+  color: #ce0000;
+  text-align: center;
+  font-weight: 100;
+  letter-spacing: 7px;
+  margin-top: 0;
+  margin-bottom: 40px;
+}
+
+p {
+  font-family: 'montserrat', sans-serif;
+  font-size: 1.1em;
+  color: #333;
+  font-weight: 400;
+  text-align: left;
+  line-height: 1.7;
+  letter-spacing: 1px;
+}
+
+.index-intro {
+  text-align: left;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.1em;
+  color: #333;
+  font-weight: 400;
+  line-height: 1.6;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding-bottom: 10px;
+}
+
+.index_grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 16px;
+  margin-bottom: 24px;
+  margin-top: 70px;
+  align-items: start;   /* stop the grid from stretching them to match */
+}
+
+.entry {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  background-color: rgba(230, 230, 230, 0.5);
+}
+
+.entry_content {
+  max-height: 400px;        /* show only the first 600px */
+  overflow: hidden;         /* hide the rest */
+  position: relative;
+  transition: max-height 0.4s ease;
+}
+
+.entry_content.expanded {
+  max-height: none;       /* big enough to show everything when opened */
+}
+
+/* the soft fade at the bottom of the cut-off text */
+.entry_content:not(.expanded)::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 80px;
+  background: linear-gradient(transparent, #e6e6e6);  /* fades to your box color */
+  pointer-events: none;
+}
+
+.projects-heading {
+  text-align: center;
+  font-family: 'Cardo', serif;
+  font-size: 4em;
+  color: #333;
+  font-weight: 100;
+  margin-top: 0;
+  /* border-bottom: #ce0000 .25px solid; */
+}
+
+.projects-heading::after {
+  content: "";
+  display: block;
+  width: 180px;              /* how long the line is */
+  height: 1px;              /* how thick */
+  background-color: #ce0000; /* your red */
+  margin: 20px auto 0 auto;  /* centers it, with space above */
+}
+
+.projects-intro {
+  text-align: left;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.1em;
+  color: #333;
+  font-weight: 400;
+  line-height: 1.6;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 16px;
+  margin-bottom: 24px;
+  margin-top: 70px;
+  align-items: start;   /* lets each card be its own height instead of stretching */
+}
+
+.grid p {
+  font-family: lato, sans-serif;
+  font-weight: lighter;
+  text-align: left;
+  font-size: 1em;
+  padding-left: 20px;
+}
+
+.grid h2 {
+  font-family: lato, sans-serif;
+  font-weight: 400;
+  text-align: center;
+  font-size: 1.4em;
+  padding-left: 20px;
+}
+
+.project-card summary {
+  cursor: pointer;
+}
+.project-card[open] {
+  background: #fafafa;
+}
+
+.project-card {
+  background: #D1D1D1;
+  background-image: url('background.svg');
+  background-repeat: repeat;
+  padding: 16px;
+  border-radius: 3px;
+  box-shadow: 1px 4px 6px rgba(0, 0, 0, 0.3);
+  min-height: 150px;   /* all cards at least this tall */
+}
+
+.project-card summary {
+  list-style: none;        /* removes default triangle */
+  text-align: center;
+  cursor: pointer;
+}
+
+.project-card summary::-webkit-details-marker {
+  display: none;           /* hides default arrow in Safari/Chrome */
+}
+
+.project-card summary::before {
+  content: "+";
+  display: block;
+  text-align: left;
+  padding-left: 16px;
+  font-size: 2em;
+  height: 20px;          /* ← fixed space */
+  line-height: 20px;  
+  transition: transform 0.3s ease;   /* the animation */
+  transform-origin: center; 
+}
+
+.project-card[open] summary::before {
+  content: "×";     /* swaps the + for × when open — no rotation */
+}
+
+.project-card a {
+  color: #333;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+.project-card a:hover,
+.project-card a:focus {
+  color: #ce0000;
+}
+
+.project-image {
+  width: 100%;
+  max-width: 400px;
+  height: auto;
+}
+
+.contact_grid_wwl {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 16px;
+  margin-bottom: 24px;
+  margin-top: 70px;
+  align-items: start;   /* lets each card be its own height instead of stretching */
+}
+
+.contact_grid {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  gap: 24px;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 16px;
+  margin-bottom: 24px;
+  margin-top: 70px;
+  align-items: start;   /* lets each card be its own height instead of stretching */
+}
+
+.contact {
+  background: #D1D1D1;
+  background-repeat: repeat;
+  padding:20px;
+  border-radius: 0px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  background-color: rgba(230, 230, 230, 0.5);
+}
+
+.photo-card {
+  position: relative;
+  overflow: hidden;
+  background-color: #D1D1D1;
+  padding: 30px;
+  box-shadow: 1px 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+.contact-image {
+  display: block;
+  width: 100%;
+  max-width: 250px;
+  height: auto;
+  margin: 0 auto;
+}
+
+.photo-card::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('background.svg');
+  background-repeat: repeat;
+  background-size: 300px;
+  opacity: 1;
+  pointer-events: none;
+}
+
+.contact-intro {
+  text-align: left;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1em;
+  color: #333;
+  font-weight: 400;
+  line-height: 1.6;
+  max-width: 800px;
+  margin: 10 auto;
+}
+
+.contact-link {
+  text-align: left;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1em;
+  color: #333;
+  font-weight: 400;
+  line-height: 1.6;
+  max-width: 800px;
+  margin: 10 auto;
+}
+
+.contact-link a {
+  color: black;             /* your site's red */
+  text-decoration: none;
+  font-family: 'Lato', sans-serif;      /* removes the underline */
+  font-weight: bolder;
+}
+
+.contact-link a:hover {
+  color: #ce0000;             /* slightly darker red when hovered — optional */
+}
+
+/* responsive: 2 cols on medium, 1 on small */
+@media (max-width: 800px) {
+  .grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 480px) {
+  .grid { grid-template-columns: 1fr; }
+}
+
+footer {
+  margin-top: 100px;
+  padding-top: 40px;
+  box-shadow: 0px 4px 6px .5px #ce0000;
+  background-image: url('background.svg');  
+  background-repeat: repeat;    
+  background-size: 400px;   
+  background-color: #D1D1D1;
+  color: black;
+  text-align: center;
+  padding: 20px;
+  position: static;
+  bottom: 0;
+  width: 100%;
+}
+
+
+.footer-logo {
+    width: 300px;
+    height: auto;
+}
+
+footer p {
+  text-align: center;
+  font-family: 'lato', sans-serif;
+  font-size: 1.2em;
+  letter-spacing: 5px;
+  font-weight: 100;
+  color: #ce0000;
+}
