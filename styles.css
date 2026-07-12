@@ -82,32 +82,6 @@ nav a:hover {
   background: currentColor;
 }
 
-@media (max-width: 900px) {
-  .nav-toggle {
-    display: inline-flex;
-  }
-
-  .nav-links {
-    position: absolute;
-    top: 100%;
-    right: 0;
-    left: 0;
-    flex-direction: column;
-    background: white;
-    overflow: hidden;
-    max-height: 0;
-    transition: max-height 0.25s ease;
-  }
-
-  .nav-links.open {
-    max-height: 360px;
-  }
-
-  .nav-links li {
-    padding: 1rem 1.5rem;
-  }
-}
-
 main {
   margin-top: 160px; 
 }
@@ -158,10 +132,10 @@ h4 {
 
 h5 {
   font-family: 'Lato', sans-serif;
-  font-size: 1.4em;
+  font-size: 1.6em;
   color: #ce0000;
   text-align: center;
-  font-weight: 100;
+  font-weight: 400;
   letter-spacing: 7px;
   margin-top: 0;
   margin-bottom: 40px;
@@ -186,7 +160,7 @@ p {
   line-height: 1.6;
   max-width: 1000px;
   margin: 0 auto;
-  padding-bottom: 10px;
+  padding: 0 20px 10px;
 }
 
 .index_grid {
@@ -267,7 +241,7 @@ p {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 24px;
-  max-width: 1200px;
+  max-width: 900px;
   margin: 0 auto;
   padding: 0 16px;
   margin-bottom: 24px;
@@ -448,30 +422,110 @@ p {
   color: #ce0000;             /* slightly darker red when hovered — optional */
 }
 
-/* responsive: 2 cols on medium, 1 on small */
-@media (max-width: 800px) {
-  .grid { grid-template-columns: repeat(2, 1fr); }
+
+/* tablet / small laptop: between 901px and 1100px */
+@media (min-width: 901px) and (max-width: 1100px) {
+
+  .navbar-content {
+    padding: 20px 30px;    /* was 30px 80px */
+    font-size: 1.2em;      /* was 1.4em — links a touch smaller */
+  }
+
+  .nav-links {
+    gap: 40px;             /* was 90px */
+    padding-right: 0;      /* was 80px */
+  }
+
+  main h1 {
+    font-size: 4em;        /* was 6em */
+    letter-spacing: 4px;
+  }
+
+  h5 {
+    font-size: 1.3em;
+  }
+
+  .index-intro {
+    padding: 0 40px;
+  }
 }
-@media (max-width: 480px) {
-  .grid { grid-template-columns: 1fr; }
+
+@media (max-width: 900px) {
+  .nav-toggle {
+    display: inline-flex;
+    flex-direction: column;   /* NEW: stack children top-to-bottom */
+    padding: 20px 30px;
+  }
+
+  .header-logo {
+    width: 300px;
+  }
+
+  .nav-links {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    flex-direction: column;
+    background: #e6e6e6;
+    overflow: hidden;
+    max-height: 0;
+    transition: max-height 0.25s ease;
+    gap: 0;              /* NEW: no big gaps when stacked */
+    margin: 0;           /* NEW: removes browser default space */
+    padding: 0;          /* NEW: removes the 80px right padding + default indent */
+    width: 75%;              /* NEW: makes the menu narrower on small screens */
+  }
+
+  .nav-links.open {
+    max-height: 360px;
+  }
+
+  .nav-links li {
+    padding: 1rem 1.5rem;
+  }
+
+  .navbar-content {
+    padding: 16px 20px;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+    max-width: 560px;      /* cards never get wider than this */
+    margin: 40px auto;        /* auto = split leftover space evenly → centered */
+    padding: 0 20px;       /* small, phone-friendly breathing room */
+  }
+
+  .project-card {
+    min-height: 0;   /* let closed cards shrink to fit their title */
+  }
 }
 
 /* smaller H1 on tablet / phone */
 @media (max-width: 900px) {
-  main h1 {
-    font-size: 2.2rem;
+  main h1 { display: none; }
+  .index-intro {
+    padding: 0 60px;
   }
+  
 }
 
 @media (max-width: 600px) {
-  main h1 {
-    font-size: 1.9rem;
+  h5 {
+    font-size: 1.1em;
+    letter-spacing: 6px;
+    padding: 0 20px;
+    line-height: 1.8;
   }
-}
-
-/* index intro padding */
-.index-intro {
-  padding: 0 10px;
+  .contact-image {
+    max-width: 160px;
+  }
+  .projects-intro {
+    padding: 0 20px;
+  }
+  /* center footer logo */
+  footer {
+    text-align: center;
+  }
 }
 
 /* stack index grid on smaller screens */
@@ -493,14 +547,19 @@ p {
   }
 }
 
-/* center footer logo */
-footer {
-  text-align: center;
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
 }
 
 footer .footer-logo {
   display: block;
   margin: 0 auto 0.75rem;
+
 }
 
 footer {
@@ -513,23 +572,24 @@ footer {
   background-color: #D1D1D1;
   color: black;
   text-align: center;
-  padding: 20px;
+  box-sizing: border-box; 
   position: static;
   bottom: 0;
+  padding-bottom: 10px;
   width: 100%;
 }
 
 
 .footer-logo {
-    width: 300px;
+    width: 160px;
     height: auto;
 }
 
 footer p {
   text-align: center;
   font-family: 'lato', sans-serif;
-  font-size: 1.2em;
+  font-size: 1em;
   letter-spacing: 5px;
-  font-weight: 100;
+  font-weight: 300;
   color: #ce0000;
 }
